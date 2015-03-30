@@ -48,5 +48,5 @@ docker run -d -it -p $APACHE_SSH_PORT:22 -p $APACHE_A_PORT:80 --name $DOCKERNAME
 docker run -d -it -p $APACHE_SSH_PORT:22 -p $APACHE_B_PORT:80 --name $DOCKERNAME_APACHE_B robbertvdzon/$DOCKERNAME_APACHE_B
 
 # build and run haproxy container
-docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
-docker run -d -it -p $HAPROXY_PORT:80 --name $DOCKERNAME_HAPROXY --link $DOCKERNAME_APACHE_A:apache1 $DOCKERNAME_APACHE_A:apache2 robbertvdzon/$DOCKERNAME_HAPROXY
+#docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
+#docker run -d -it -p $HAPROXY_PORT:80 --name $DOCKERNAME_HAPROXY --link $DOCKERNAME_APACHE_A:apache1 $DOCKERNAME_APACHE_A:apache2 robbertvdzon/$DOCKERNAME_HAPROXY
