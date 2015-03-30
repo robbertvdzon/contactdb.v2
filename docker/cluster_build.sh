@@ -11,7 +11,8 @@ fi
 export APACHE_A_PORT=${CLUSTERNR}"084"
 export APACHE_B_PORT=${CLUSTERNR}"085"
 export HAPROXY_PORT=${CLUSTERNR}"080"
-export APACHE_SSH_PORT=${CLUSTERNR}"122"
+export APACHE_A_SSH_PORT=${CLUSTERNR}"422"
+export APACHE_B_SSH_PORT=${CLUSTERNR}"522"
 export WILDFLY_SSH_PORT=${CLUSTERNR}"222"
 export MYSQL_SSH_PORT=${CLUSTERNR}"322"
 
@@ -44,8 +45,8 @@ docker rm -f $DOCKERNAME_APACHE_B
 
 # build and run apache container
 docker build -t robbertvdzon/$DOCKERNAME_APACHE ./apache
-docker run -d -it -p $APACHE_SSH_PORT:22 -p $APACHE_A_PORT:80 --name $DOCKERNAME_APACHE_A robbertvdzon/$DOCKERNAME_APACHE
-docker run -d -it -p $APACHE_SSH_PORT:22 -p $APACHE_B_PORT:80 --name $DOCKERNAME_APACHE_B robbertvdzon/$DOCKERNAME_APACHE
+docker run -d -it -p $APACHE_A_SSH_PORT:22 -p $APACHE_A_PORT:80 --name $DOCKERNAME_APACHE_A robbertvdzon/$DOCKERNAME_APACHE
+docker run -d -it -p $APACHE_B_SSH_PORT:22 -p $APACHE_B_PORT:80 --name $DOCKERNAME_APACHE_B robbertvdzon/$DOCKERNAME_APACHE
 
 # build and run haproxy container
 #docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
