@@ -24,8 +24,8 @@ export WILDFLY_APP_PORT=${CLUSTERNR}"088"
 # docker names
 export DOCKERNAME_HAPROXY="haproxy"$CLUSTERNR
 export DOCKERNAME_APACHE="apache"$CLUSTERNR
-export DOCKERNAME_APACHE_A="apacheA"$CLUSTERNR
-export DOCKERNAME_APACHE_B="apacheB"$CLUSTERNR
+export DOCKERNAME_APACHE_A="apachea"$CLUSTERNR
+export DOCKERNAME_APACHE_B="apacheb"$CLUSTERNR
 export DOCKERNAME_WILDFLY="wildfly"$CLUSTERNR
 export DOCKERNAME_MYSQLDB="mysqldb"$CLUSTERNR
 
@@ -48,7 +48,6 @@ echo docker build -t robbertvdzon/$DOCKERNAME_APACHE_A ./apache
 docker build -t robbertvdzon/$DOCKERNAME_APACHE_A ./apache
 echo docker run -d -it -p $APACHE_A_SSH_PORT:22 -p $APACHE_A_PORT:80 --name $DOCKERNAME_APACHE_A robbertvdzon/$DOCKERNAME_APACHE_A
 docker run -d -it -p $APACHE_A_SSH_PORT:22 -p $APACHE_A_PORT:80 --name $DOCKERNAME_APACHE_A robbertvdzon/$DOCKERNAME_APACHE_A
-echo hhhhhhhhhhhhhhhhhhhhhhhh
 
 docker build -t robbertvdzon/$DOCKERNAME_APACHE_B ./apache2
 docker run -d -it -p $APACHE_B_SSH_PORT:22 -p $APACHE_B_PORT:80 --name $DOCKERNAME_APACHE_B robbertvdzon/$DOCKERNAME_APACHE_B
