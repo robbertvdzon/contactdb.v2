@@ -32,23 +32,23 @@ export DOCKERNAME_MYSQLDB="mysqldb"$CLUSTERNR
 docker rm -f $DOCKERNAME_HAPROXY
 docker rm -f $DOCKERNAME_APACHE_A
 docker rm -f $DOCKERNAME_APACHE_B
-#docker rm -f $DOCKERNAME_WILDFLY
-#docker rm -f $DOCKERNAME_MYSQLDB
+docker rm -f $DOCKERNAME_WILDFLY
+docker rm -f $DOCKERNAME_MYSQLDB
 
 # build and run mysql container
-#docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB ./mysql
-#docker run -d -p $MYSQL_SSH_PORT:22 -p $MYPHPADMIN_PORT:80 --name $DOCKERNAME_MYSQLDB robbertvdzon/$DOCKERNAME_MYSQLDB
+docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB ./mysql
+docker run -d -p $MYSQL_SSH_PORT:22 -p $MYPHPADMIN_PORT:80 --name $DOCKERNAME_MYSQLDB robbertvdzon/$DOCKERNAME_MYSQLDB
 
 # build and run wildfly container
-#docker build -t robbertvdzon/$DOCKERNAME_WILDFLY ./wildfly
-#docker run -d -it -p $WILDFLY_SSH_PORT:22 -p $WILDFLY_DEBUG_PORT:8787 -p $WILDFLY_ADMIN_PORT:9990 -p $WILDFLY_APP_PORT:8080 --name $DOCKERNAME_WILDFLY --link $DOCKERNAME_MYSQLDB:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY
+docker build -t robbertvdzon/$DOCKERNAME_WILDFLY ./wildfly
+docker run -d -it -p $WILDFLY_SSH_PORT:22 -p $WILDFLY_DEBUG_PORT:8787 -p $WILDFLY_ADMIN_PORT:9990 -p $WILDFLY_APP_PORT:8080 --name $DOCKERNAME_WILDFLY --link $DOCKERNAME_MYSQLDB:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY
 
 # build and run apache container
 docker build -t robbertvdzon/$DOCKERNAME_APACHE_A ./apache
-docker run -d -it -p $APACHE_A_SSH_PORT:22 -p $APACHE_A_PORT:80 --name $DOCKERNAME_APACHE_A robbertvdzon/$DOCKERNAME_APACHE_A
+docker run -d -it -p $APACHE_A_SSH_PORT:22 -p $APACHE_A_PORT:80 --link $DOCKERNAME_WILDFLY:wildfly --name $DOCKERNAME_APACHE_A robbertvdzon/$DOCKERNAME_APACHE_A
 
 docker build -t robbertvdzon/$DOCKERNAME_APACHE_B ./apache2
-docker run -d -it -p $APACHE_B_SSH_PORT:22 -p $APACHE_B_PORT:80 --name $DOCKERNAME_APACHE_B robbertvdzon/$DOCKERNAME_APACHE_B
+docker run -d -it -p $APACHE_B_SSH_PORT:22 -p $APACHE_B_PORT:80 --link $DOCKERNAME_WILDFLY:wildfly --name $DOCKERNAME_APACHE_B robbertvdzon/$DOCKERNAME_APACHE_B
 
 # build and run haproxy container
 docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
