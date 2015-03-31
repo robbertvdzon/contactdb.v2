@@ -25,4 +25,6 @@ CMD ["bash", "/haproxy-start"]
 
 # Expose ports.
 EXPOSE 80
+EXPOSE 81
+EXPOSE 82
 EXPOSE 443
