@@ -14,7 +14,7 @@ export MYSQL_SSH_PORT1="1522"
 export MYSQL_SSH_PORT2="1622"
 
 export MYPHPADMIN_PORT1="1082"
-export MYPHPADMIN_PORT2="1183"
+export MYPHPADMIN_PORT2="1182"
 export WILDFLY_ADMIN_PORT1="1090"
 export WILDFLY_ADMIN_PORT2="1190"
 export WILDFLY_DEBUG_PORT1="1087"
@@ -40,11 +40,11 @@ docker rm -f $DOCKERNAME_MYSQLDB1
 docker rm -f $DOCKERNAME_MYSQLDB2
 
 # build and run mysql container
-docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB1 ./mysq
+docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB1 ./mysql
 docker run -d -p $MYSQL_SSH_PORT1:22 -p $MYPHPADMIN_PORT1:80 --name $DOCKERNAME_MYSQLDB1 robbertvdzon/$DOCKERNAME_MYSQLDB1
 
 # build and run mysql container
-docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB2 ./mysq
+docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB2 ./mysql
 docker run -d -p $MYSQL_SSH_PORT2:22 -p $MYPHPADMIN_PORT2:80 --name $DOCKERNAME_MYSQLDB2 robbertvdzon/$DOCKERNAME_MYSQLDB2
 
 # build and run wildfly container
