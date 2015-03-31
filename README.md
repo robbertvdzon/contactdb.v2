@@ -1,4 +1,4 @@
-### Building a contact database using AngularJS, REST services, JEE7, Java8, Apache, Wildfly, MySQL and Docker
+### Building a contact database using AngularJS, REST services, JEE7, Java8, Apache, Wildfly, MySQL, Docker with a HAProxy loadbalancer (note: this project is still in progress..)
 
 
 ----------
