@@ -2,7 +2,7 @@ FROM wnameless/mysql-phpmyadmin
 MAINTAINER Robbert vd Zon <robbert@vdzon.com>
 
 RUN apt-get update
-RUN apt-install -y vim
+RUN apt-get install -y vim
 
 
 RUN mkdir /data
