@@ -11,7 +11,7 @@
   
 
 **Architecture picture:**  <br>
-![alt tag](https://raw.githubusercontent.com/robbertvdzon/contactdb.v2/master/contactdatabase1-architecture.png)
+![alt tag](https://raw.githubusercontent.com/robbertvdzon/contactdb.v2/master/contactdatabase2-architecture.png)
 
 Step 1: Setting up ubuntu server for running, deploying an debugging
 ------------------------------------------
