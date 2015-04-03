@@ -13,3 +13,4 @@ RUN /data/config.sh
 
 #CMD service apache2 start; \
 #    mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency
+CMD /bin/bash
