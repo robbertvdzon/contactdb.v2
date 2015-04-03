@@ -15,6 +15,11 @@ mysqladmin --silent --wait=30 ping
 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
+
+# user for haproxy to be able to ping
+mysql -u root -p -e "INSERT INTO mysql.user (Host,User) values ('%','haproxy_check'); FLUSH PRIVILEGES;"
+mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO 'haproxy_root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION; FLUSH PRIVILEGES"
+
 mysql -u root < /data/contact.sql
 
 # setup the slave configuration

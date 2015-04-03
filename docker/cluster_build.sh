@@ -4,6 +4,9 @@
 export HAPROXY_PORT="80"
 export HAPROXY_ADMIN_PORT="81"
 
+export HAPROXY_MYSQL_PORT="3306"
+export HAPROXY_MYSQL_ADMIN_PORT="82"
+
 export APACHE_PORT1="84"
 export APACHE_PORT2="85"
 export APACHE_SSH_PORT1="1122"
@@ -47,21 +50,26 @@ docker run -d -p $MYSQL_SSH_PORT1:22 -p $MYPHPADMIN_PORT1:80 -p 172.17.42.1:1330
 docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB2 ./mysql2
 docker run -d -p $MYSQL_SSH_PORT2:22 -p $MYPHPADMIN_PORT2:80 -p 172.17.42.1:23306:3306 --name $DOCKERNAME_MYSQLDB2 robbertvdzon/$DOCKERNAME_MYSQLDB2
 
+# build and run mysql haproxy container
+docker build -t robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY ./myqlhaproxy
+docker run -d -it -p $HAPROXY_MYSQL_PORT:3306 -p $HAPROXY_MYSQL_ADMIN_PORT:82 --name $DOCKERNAME_MYSQL_HAPROXY --link $DOCKERNAME_MYSQLDB1:mysqldb1 --link $DOCKERNAME_MYSQLDB2:mysqldb1 robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY
+
+
 # build and run wildfly container
 docker build -t robbertvdzon/$DOCKERNAME_WILDFLY1 ./wildfly
 docker run -d -it -p $WILDFLY_SSH_PORT1:22 -p $WILDFLY_DEBUG_PORT1:8787 -p $WILDFLY_ADMIN_PORT1:9990 -p $WILDFLY_APP_PORT1:8080 --name $DOCKERNAME_WILDFLY1 --link $DOCKERNAME_MYSQLDB1:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY1
 
 # build and run wildfly container
-docker build -t robbertvdzon/$DOCKERNAME_WILDFLY2 ./wildfly
-docker run -d -it -p $WILDFLY_SSH_PORT2:22 -p $WILDFLY_DEBUG_PORT2:8787 -p $WILDFLY_ADMIN_PORT2:9990 -p $WILDFLY_APP_PORT2:8080 --name $DOCKERNAME_WILDFLY2 --link $DOCKERNAME_MYSQLDB2:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY2
+#docker build -t robbertvdzon/$DOCKERNAME_WILDFLY2 ./wildfly
+#docker run -d -it -p $WILDFLY_SSH_PORT2:22 -p $WILDFLY_DEBUG_PORT2:8787 -p $WILDFLY_ADMIN_PORT2:9990 -p $WILDFLY_APP_PORT2:8080 --name $DOCKERNAME_WILDFLY2 --link $DOCKERNAME_MYSQLDB2:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY2
 
 # build and run apache container
 docker build -t robbertvdzon/$DOCKERNAME_APACHE1 ./apache
 docker run -d -it -p $APACHE_SSH_PORT1:22 -p $APACHE_PORT1:80 --link $DOCKERNAME_WILDFLY1:wildfly --name $DOCKERNAME_APACHE1 robbertvdzon/$DOCKERNAME_APACHE1
 
-docker build -t robbertvdzon/$DOCKERNAME_APACHE2 ./apache2
-docker run -d -it -p $APACHE_SSH_PORT2:22 -p $APACHE_PORT2:80 --link $DOCKERNAME_WILDFLY2:wildfly --name $DOCKERNAME_APACHE2 robbertvdzon/$DOCKERNAME_APACHE2
+#docker build -t robbertvdzon/$DOCKERNAME_APACHE2 ./apache2
+#docker run -d -it -p $APACHE_SSH_PORT2:22 -p $APACHE_PORT2:80 --link $DOCKERNAME_WILDFLY2:wildfly --name $DOCKERNAME_APACHE2 robbertvdzon/$DOCKERNAME_APACHE2
 
 # build and run haproxy container
-docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
-docker run -d -it -p 80:80 -p 81:81 --name $DOCKERNAME_HAPROXY --link $DOCKERNAME_APACHE1:apache1 --link $DOCKERNAME_APACHE2:apache2 robbertvdzon/$DOCKERNAME_HAPROXY
+#docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
+#docker run -d -it -p $HAPROXY_PORT:80 -p $HAPROXY_ADMIN_PORT:81 --name $DOCKERNAME_HAPROXY --link $DOCKERNAME_APACHE1:apache1 --link $DOCKERNAME_APACHE2:apache2 robbertvdzon/$DOCKERNAME_HAPROXY
