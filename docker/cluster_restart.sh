@@ -1,3 +1,3 @@
 #!/bin/bash
-./cluster_stop $1
-./cluster_start $1
+./cluster_stop.sh
+./cluster_start.sh
