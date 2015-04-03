@@ -11,9 +11,12 @@ chown mysql:mysql /var/lib/mysql
 
 # run mysqld
 #mysqld_safe &
+echo START MYSQLD WITY GTID
 mysqld_safe --gtid_mode=ON  &
 
+echo WAIT NOW
 mysqladmin --silent --wait=30 ping
+echo CONTINUE
 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
