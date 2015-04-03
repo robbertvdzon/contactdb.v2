@@ -11,9 +11,18 @@ chown mysql:mysql /var/lib/mysql
 
 # run mysqld
 mysqld_safe &
-mysqladmin --silent --wait=30 ping 
+mysqladmin --silent --wait=30 ping
 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
 mysql -u root < /data/contact.sql
+
+# setup the slave configuration
+mysql -e "create user 'replicator'@'%' identified by 'password';"
+mysql -e "grant replication slave on *.* to 'replicator'@'%'; "
+mysql -e "slave stop; "
+mysql -e "CHANGE MASTER TO MASTER_HOST = '172.17.42.1', MASTER_PORT = 23306, MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 107;"
+mysql -e "slave start; "
+mysql -e "show master status; "
+
 
