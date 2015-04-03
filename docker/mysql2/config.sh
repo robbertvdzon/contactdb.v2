@@ -11,7 +11,7 @@ chown mysql:mysql /var/lib/mysql
 
 # run mysqld
 #mysqld_safe &
-mysqld_safe --gtid_mode=ON  &
+mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
 
 sleep 4
 #mysqladmin --silent --wait=30 ping

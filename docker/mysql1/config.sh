@@ -12,7 +12,7 @@ chown mysql:mysql /var/lib/mysql
 # run mysqld
 #mysqld_safe &
 echo START MYSQLD WITY GTID
-mysqld_safe --gtid_mode=ON  &
+mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
 
 echo WAIT NOW
 #mysqladmin --silent --wait=30 ping
