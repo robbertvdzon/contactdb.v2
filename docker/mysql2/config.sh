@@ -13,7 +13,8 @@ chown mysql:mysql /var/lib/mysql
 #mysqld_safe &
 mysqld_safe --gtid_mode=ON  &
 
-mysqladmin --silent --wait=30 ping 
+sleep 4
+#mysqladmin --silent --wait=30 ping
 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"

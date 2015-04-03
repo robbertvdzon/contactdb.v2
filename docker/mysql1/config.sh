@@ -15,7 +15,8 @@ echo START MYSQLD WITY GTID
 mysqld_safe --gtid_mode=ON  &
 
 echo WAIT NOW
-mysqladmin --silent --wait=30 ping
+#mysqladmin --silent --wait=30 ping
+sleep 4
 echo CONTINUE
 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
