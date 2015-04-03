@@ -25,12 +25,20 @@ public class AuthenticationResource {
     @Path("login")
     @PermitAll
     public AuthAccessElement login(@Context HttpServletRequest request, AuthLoginElement loginElement) {
-        AuthAccessElement accessElement = authService.login(loginElement);
-        if (accessElement != null) {
-            request.getSession().setAttribute(AuthAccessElement.PARAM_AUTH_ID, accessElement.getAuthId());
-            request.getSession().setAttribute(AuthAccessElement.PARAM_AUTH_TOKEN, accessElement.getAuthToken());
+        System.out.println("START LOGIN");
+        try {
+
+            AuthAccessElement accessElement = authService.login(loginElement);
+            if (accessElement != null) {
+                request.getSession().setAttribute(AuthAccessElement.PARAM_AUTH_ID, accessElement.getAuthId());
+                request.getSession().setAttribute(AuthAccessElement.PARAM_AUTH_TOKEN, accessElement.getAuthToken());
+            }
+            return accessElement;
         }
-        return accessElement;
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
 

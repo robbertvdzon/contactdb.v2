@@ -61,7 +61,9 @@ docker run -d -it -p $HAPROXY_MYSQL_PORT:3306 -p $HAPROXY_MYSQL_ADMIN_PORT:82 --
 
 # build and run wildfly container
 docker build -t robbertvdzon/$DOCKERNAME_WILDFLY1 ./wildfly
-docker run -d -it -p $WILDFLY_SSH_PORT1:22 -p $WILDFLY_DEBUG_PORT1:8787 -p $WILDFLY_ADMIN_PORT1:9990 -p $WILDFLY_APP_PORT1:8080 --name $DOCKERNAME_WILDFLY1 --link $DOCKERNAME_MYSQL_HAPROXY:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY1
+#docker run -d -it -p $WILDFLY_SSH_PORT1:22 -p $WILDFLY_DEBUG_PORT1:8787 -p $WILDFLY_ADMIN_PORT1:9990 -p $WILDFLY_APP_PORT1:8080 --name $DOCKERNAME_WILDFLY1 --link $DOCKERNAME_MYSQL_HAPROXY:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY1
+docker run -d -it -p $WILDFLY_SSH_PORT1:22 -p $WILDFLY_DEBUG_PORT1:8787 -p $WILDFLY_ADMIN_PORT1:9990 -p $WILDFLY_APP_PORT1:8080 --name $DOCKERNAME_WILDFLY1 --link $DOCKERNAME_MYSQLDB1:mysqldb robbertvdzon/$DOCKERNAME_WILDFLY1
+
 
 # build and run wildfly container
 #docker build -t robbertvdzon/$DOCKERNAME_WILDFLY2 ./wildfly
