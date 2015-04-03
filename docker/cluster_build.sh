@@ -54,8 +54,8 @@ docker run -d -p $MYSQL_SSH_PORT2:22 -p $MYPHPADMIN_PORT2:80 -p 172.17.42.1:2330
 
 # build and run mysql haproxy container
 
-echo docker build -t robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY ./mysqlhaproxy
 
+docker build -t robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY ./mysqlhaproxy
 docker run -d -it -p $HAPROXY_MYSQL_PORT:3306 -p $HAPROXY_MYSQL_ADMIN_PORT:82 --name $DOCKERNAME_MYSQL_HAPROXY robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY
 
 
