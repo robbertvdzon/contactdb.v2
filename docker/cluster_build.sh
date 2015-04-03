@@ -54,14 +54,9 @@ docker run -d -p $MYSQL_SSH_PORT2:22 -p $MYPHPADMIN_PORT2:80 -p 172.17.42.1:2330
 
 # build and run mysql haproxy container
 
-echo ---------1
 echo docker build -t robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY ./mysqlhaproxy
 
-docker build -t robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY ./mysqlhaproxy
-echo ---------2
-echo docker run -d -it -p $HAPROXY_MYSQL_PORT:3306 -p $HAPROXY_MYSQL_ADMIN_PORT:82 --name $DOCKERNAME_MYSQL_HAPROXY --link $DOCKERNAME_MYSQLDB1:mysqldb1 --link $DOCKERNAME_MYSQLDB2:mysqldb1 robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY
-
-docker run -d -it -p $HAPROXY_MYSQL_PORT:3306 -p $HAPROXY_MYSQL_ADMIN_PORT:82 --name $DOCKERNAME_MYSQL_HAPROXY --link $DOCKERNAME_MYSQLDB1:mysqldb1 --link $DOCKERNAME_MYSQLDB2:mysqldb2 robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY
+docker run -d -it -p $HAPROXY_MYSQL_PORT:3306 -p $HAPROXY_MYSQL_ADMIN_PORT:82 --name $DOCKERNAME_MYSQL_HAPROXY robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY
 
 
 # build and run wildfly container
