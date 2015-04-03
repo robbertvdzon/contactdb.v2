@@ -3,7 +3,6 @@ MAINTAINER Robbert vd Zon <robbert@vdzon.com>
 
 RUN apt-get update
 RUN apt-get install -y vim
-RUN apt-get install mysql-client
 
 RUN mkdir /data
 COPY config.sh /data/config.sh
