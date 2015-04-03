@@ -10,7 +10,8 @@ echo "mysqld: ALL" >> /etc/hosts.allow
 chown mysql:mysql /var/lib/mysql
 
 # run mysqld
-mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency &
+mysqld_safe &
+#mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency &
 
 mysqladmin --silent --wait=30 ping 
 
