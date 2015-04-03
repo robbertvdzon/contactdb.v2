@@ -21,7 +21,7 @@ mysql -u root < /data/contact.sql
 mysql -e "create user 'replicator'@'%' identified by 'password';"
 mysql -e "grant replication slave on *.* to 'replicator'@'%'; "
 mysql -e "slave stop; "
-mysql -e "CHANGE MASTER TO MASTER_HOST = '172.17.42.1', MASTER_PORT = 23306, MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 107;"
+mysql -e "CHANGE MASTER TO MASTER_HOST = '172.17.42.1', MASTER_PORT = 23306, MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 2153;"
 mysql -e "slave start; "
 mysql -e "show master status; "
 
