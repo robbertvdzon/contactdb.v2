@@ -15,7 +15,7 @@ echo START MYSQLD WITY GTID
 #mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
 
 echo WAIT NOW
-#mysqladmin --silent --wait=30 ping
+mysqladmin --silent --wait=30 ping
 #sleep 4
 echo CONTINUE
 
