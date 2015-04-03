@@ -10,11 +10,11 @@ echo "mysqld: ALL" >> /etc/hosts.allow
 chown mysql:mysql /var/lib/mysql
 
 # run mysqld
-mysqld_safe &
-#mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
+#mysqld_safe &
+mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
 
-#sleep 4
-mysqladmin --silent --wait=30 ping
+sleep 8
+#mysqladmin --silent --wait=30 ping
 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
