@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # setup my.cnf to enable mysql to run as a slave
-sed -i -e"s/^#server-id\s*=\s*1/server-id = 1/" /etc/mysql/my.cnf
+sed -i -e"s/^#server-id\s*=\s*1/server-id = 2/" /etc/mysql/my.cnf
 sed -i -e"s/#log_bin/log_bin/" /etc/mysql/my.cnf
 sed -i -e"s/^#binlog_do_db\s*=\s*include_database_name/binlog_do_db = contact/" /etc/mysql/my.cnf
 sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
