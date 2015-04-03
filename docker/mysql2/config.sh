@@ -10,8 +10,8 @@ echo "mysqld: ALL" >> /etc/hosts.allow
 chown mysql:mysql /var/lib/mysql
 
 # run mysqld
-#mysqld_safe &
-mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
+mysqld_safe &
+#mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
 
 sleep 4
 #mysqladmin --silent --wait=30 ping
@@ -23,7 +23,7 @@ mysql -u root < /data/contact.sql
 # setup the slave configuration
 mysql -e "create user 'replicator'@'%' identified by 'password';"
 mysql -e "grant replication slave on *.* to 'replicator'@'%'; "
-mysql -e "slave stop; "
-mysql -e "CHANGE MASTER TO MASTER_HOST = '172.17.42.1', MASTER_PORT = 13306, MASTER_USER = 'replicator', MASTER_PASSWORD = 'password',  MASTER_AUTO_POSITION = 1;"
-mysql -e "slave start; "
+#mysql -e "slave stop; "
+#mysql -e "CHANGE MASTER TO MASTER_HOST = '172.17.42.1', MASTER_PORT = 13306, MASTER_USER = 'replicator', MASTER_PASSWORD = 'password',  MASTER_AUTO_POSITION = 1;"
+#mysql -e "slave start; "
 mysql -e "show master status; "
