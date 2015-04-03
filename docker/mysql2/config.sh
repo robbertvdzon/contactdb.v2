@@ -13,6 +13,7 @@ chown mysql:mysql /var/lib/mysql
 #mysqld_safe &
 mysqld_safe --gtid_mode=ON --log-bin --log-slave-updates --enforce-gtid-consistency  &
 
+echo WAIT NOW!!
 sleep 8
 #mysqladmin --silent --wait=30 ping
 
