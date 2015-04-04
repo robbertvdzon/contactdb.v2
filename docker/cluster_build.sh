@@ -72,7 +72,7 @@ docker build -t robbertvdzon/$DOCKERNAME_APACHE1 ./apache
 docker run -d -it -p $APACHE_SSH_PORT1:22 -p 172.17.42.1:10080:80 -p $APACHE_PORT1:80 --link $DOCKERNAME_WILDFLY1:wildfly --name $DOCKERNAME_APACHE1 robbertvdzon/$DOCKERNAME_APACHE1
 
 docker build -t robbertvdzon/$DOCKERNAME_APACHE2 ./apache2
-docker run -d -it -p $APACHE_SSH_PORT2:22 172.17.42.1:20080:80 -p $APACHE_PORT2:80 --link $DOCKERNAME_WILDFLY2:wildfly --name $DOCKERNAME_APACHE2 robbertvdzon/$DOCKERNAME_APACHE2
+docker run -d -it -p $APACHE_SSH_PORT2:22 -p 172.17.42.1:20080:80 -p $APACHE_PORT2:80 --link $DOCKERNAME_WILDFLY2:wildfly --name $DOCKERNAME_APACHE2 robbertvdzon/$DOCKERNAME_APACHE2
 
 # build and run haproxy container
 docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
