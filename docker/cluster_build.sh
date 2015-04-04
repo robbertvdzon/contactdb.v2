@@ -50,7 +50,7 @@ docker run -d -p $MYSQL_SSH_PORT1:22 -p $MYPHPADMIN_PORT1:80 -p 172.17.42.1:1330
 
 # build and run mysql container
 #docker build -t robbertvdzon/$DOCKERNAME_MYSQLDB2 ./mysql2
-#docker run -d -p $MYSQL_SSH_PORT2:22 -p $MYPHPADMIN_PORT2:80 -p 172.17.42.1:23306:3306 --name $DOCKERNAME_MYSQLDB2 robbertvdzon/$DOCKERNAME_MYSQLDB2
+docker run -d -p $MYSQL_SSH_PORT2:22 -p $MYPHPADMIN_PORT2:80 -p 172.17.42.1:23306:3306 --name $DOCKERNAME_MYSQLDB2 robbertvdzon/$DOCKERNAME_MYSQLDB2
 
 # build and run mysql haproxy container
 #docker build -t robbertvdzon/$DOCKERNAME_MYSQL_HAPROXY ./mysqlhaproxy
