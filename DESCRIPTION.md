@@ -4,9 +4,12 @@
 ----------
 
 
-**Creation date:** 26-dec-2014  <br>
-**Last modification date:** 29-maart-2015  <br>
-**Keywords:** JEE7, Java8, Wildfly, JPA, Angular, Apache, Mysql, Docker  <br>
-**Description:** Setting up 3 docker images to host a simple contact database using and apache, wildfly and mysql docker image. The contact database is created using java8, rest services and JPA on the backend and angularJS on the frontend.
+**Keywords:** <br>
+JEE7, Java8, Wildfly, JPA, Angular, Apache, Mysql, Docker, HAPRoxy<br>
+
+
+**Description:** <br>
+Setting up 7 docker images to host a simple contact database using and apache, wildfly, mysql and HAProxy docker image. The contact database is created using java8, rest services and JPA on the backend and angularJS on the frontend. The system is load balanced by HAPRoxy. The mysql, wildfly and apache docker images are started twice to demonstrate this load balancing.
+
 
 ![alt tag](https://raw.githubusercontent.com/robbertvdzon/contactdb.v2/master/contactdatabase1-architecture.png)
