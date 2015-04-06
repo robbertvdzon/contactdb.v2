@@ -27,4 +27,3 @@ if [[ -f "$OVERRIDE/$CONFIG" ]]; then
 fi
 
 exec haproxy -f /etc/haproxy/haproxy.cfg -d -p "$PIDFILE"
-#exec /bin/bash

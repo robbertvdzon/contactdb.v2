@@ -203,7 +203,22 @@ The backend runs on Wildfly on java8. <br>
 Wildfly uses the RESTEasy implementation of JAX-RS which we use to implement a set of RESTfull web services to implement the API calls to list, update, add and remove contacts.<br>
 The application uses JPA to persist the contacts.
 
+External documentation:
+-------------------------------
+Load balance two web servers<br>
+[https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-http-load-balancing-on-an-ubuntu-vps](https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-http-load-balancing-on-an-ubuntu-vps)
 
+
+Load balancing two mysql database servers:<br>
+[https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-mysql-load-balancing--3](https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-mysql-load-balancing--3)
+
+
+Setup a mysql master-master replication:<br>
+[https://www.digitalocean.com/community/tutorials/how-to-set-up-mysql-master-master-replication](https://www.digitalocean.com/community/tutorials/how-to-set-up-mysql-master-master-replication)
+
+
+Using docker internal network (for haproxy and mysql replication):<br> 
+[http://robbertvdzon.blogspot.nl/2015/04/use-internal-docker-network-when-using.html](http://robbertvdzon.blogspot.nl/2015/04/use-internal-docker-network-when-using.html)
 
 Wishlist:
 -------------------------------
