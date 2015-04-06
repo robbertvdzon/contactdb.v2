@@ -79,6 +79,7 @@ The following web en debug ports are created on the host:
 	http://ubuntuserver:81
 
 	#apache, which is running the application (for the first and second apache container)
+	#note that the REST call's will not be passed to wildfly, so the application will not work using apache directly.
 	http://ubuntuserver:84
 	http://ubuntuserver:85
 
@@ -89,6 +90,11 @@ The following web en debug ports are created on the host:
 	#the wildfly console, login as admin/admin (for the first and second wildfly container)
 	http://ubuntuserver:1090/console/App.html
 	http://ubuntuserver:1190/console/App.html
+
+	#the wildfly application (also contains the statics and works like this also, without apache)
+	http://ubuntuserver:1088
+	http://ubuntuserver:1188
+
 
 Besides these (web) ports, the followings are also created:
 
