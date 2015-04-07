@@ -28,7 +28,6 @@ echo "=> MYSQL (docker host): mysqldb"
 echo "=> MYSQL (docker port): 3306"
 echo "=> MYSQL (kubernetes host): mysqldb"
 echo "=> MYSQL (kubernetes port): 3306"
-#$JBOSS_CLI -c --file=`dirname "$0"`/commands.cli
 $JBOSS_CLI -c << EOF
 batch
 
@@ -47,7 +46,6 @@ run-batch
 EOF
 
 # Deploy the WAR
-#cp /opt/jboss/wildfly/customization/employees.war $JBOSS_HOME/$JBOSS_MODE/deployments/employees.war
 cp /data/*.war $JBOSS_HOME/standalone/deployments
 
 echo "=> Shutting down WildFly"

@@ -8,6 +8,7 @@ RUN \
   apt-get update && \
   apt-get install -y haproxy=1.5.3-1~ubuntu14.04.1 && \
   apt-get install -y vim && \
+  apt-get install -y mysql-client-core-5.5 && \
   sed -i 's/^ENABLED=.*/ENABLED=1/' /etc/default/haproxy && \
   rm -rf /var/lib/apt/lists/*
 
@@ -25,5 +26,5 @@ WORKDIR /etc/haproxy
 CMD ["bash", "/haproxy-start"]
 
 # Expose ports.
-EXPOSE 80
-EXPOSE 81
+EXPOSE 3306
+EXPOSE 82

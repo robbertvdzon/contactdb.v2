@@ -111,7 +111,7 @@ public class ContactsResource extends AbstractResource {
     @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
     public Response test1(@Context HttpHeaders headers) {
-        String result = "hallo! test v2!, 29-3 17:09";
+        String result = "hallo! test v3!, 4-4 11:05";
         return Response.accepted(result).build();
     }
 
