@@ -13,6 +13,7 @@ export APACHE_SSH_PORT1="1122"
 export APACHE_SSH_PORT2="1222"
 export WILDFLY_SSH_PORT1="1322"
 export WILDFLY_SSH_PORT2="1422"
+export WILDFLY_SSH_PORT3="1722"
 export MYSQL_SSH_PORT1="1522"
 export MYSQL_SSH_PORT2="1622"
 
@@ -20,10 +21,13 @@ export MYPHPADMIN_PORT1="1082"
 export MYPHPADMIN_PORT2="1182"
 export WILDFLY_ADMIN_PORT1="1090"
 export WILDFLY_ADMIN_PORT2="1190"
+export WILDFLY_ADMIN_PORT3="1290"
 export WILDFLY_DEBUG_PORT1="1087"
 export WILDFLY_DEBUG_PORT2="1187"
+export WILDFLY_DEBUG_PORT3="1287"
 export WILDFLY_APP_PORT1="1088"
 export WILDFLY_APP_PORT2="1188"
+export WILDFLY_APP_PORT2="1288"
 
 # docker names
 export DOCKERNAME_HAPROXY="haproxy"
@@ -78,3 +82,7 @@ docker run -d -it -p $APACHE_SSH_PORT2:22 -p 172.17.42.1:20080:80 -p $APACHE_POR
 # build and run haproxy container
 docker build -t robbertvdzon/$DOCKERNAME_HAPROXY ./haproxy
 docker run -d -it -p $HAPROXY_PORT:80 -p $HAPROXY_ADMIN_PORT:81 --name $DOCKERNAME_HAPROXY robbertvdzon/$DOCKERNAME_HAPROXY
+
+# build and run wildfly container
+docker build -t robbertvdzon/$DOCKERNAME_WILDFLY3 ./haproxyfrontend
+docker run -d -it -p $WILDFLY_SSH_PORT3:22 -p $WILDFLY_DEBUG_PORT3:8787 -p $WILDFLY_ADMIN_PORT3:9990 -p 172.17.42.1:38080:8080 -p $WILDFLY_APP_PORT3:8080 --name $DOCKERNAME_WILDFLY3 --link $DOCKERNAME_HAPROXY:haproxy robbertvdzon/$DOCKERNAME_WILDFLY3
