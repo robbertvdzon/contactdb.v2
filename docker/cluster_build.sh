@@ -86,3 +86,7 @@ docker run -d -it -p $HAPROXY_PORT:80 -p $HAPROXY_ADMIN_PORT:81 --name $DOCKERNA
 # build and run wildfly container
 docker build -t robbertvdzon/$DOCKERNAME_WILDFLY3 ./haproxyfrontend
 docker run -d -it -p $WILDFLY_SSH_PORT3:22 -p $WILDFLY_DEBUG_PORT3:8787 -p $WILDFLY_ADMIN_PORT3:9990 -p 172.17.42.1:38080:8080 -p $WILDFLY_APP_PORT3:8080 --name $DOCKERNAME_WILDFLY3 --link $DOCKERNAME_HAPROXY:haproxy robbertvdzon/$DOCKERNAME_WILDFLY3
+
+
+echo docker build -t robbertvdzon/$DOCKERNAME_WILDFLY3 ./haproxyfrontend
+echo docker run -d -it -p $WILDFLY_SSH_PORT3:22 -p $WILDFLY_DEBUG_PORT3:8787 -p $WILDFLY_ADMIN_PORT3:9990 -p 172.17.42.1:38080:8080 -p $WILDFLY_APP_PORT3:8080 --name $DOCKERNAME_WILDFLY3 --link $DOCKERNAME_HAPROXY:haproxy robbertvdzon/$DOCKERNAME_WILDFLY3
