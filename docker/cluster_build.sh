@@ -40,6 +40,7 @@ export DOCKERNAME_WILDFLY3="wildfly3"
 export DOCKERNAME_MYSQLDB1="mysqldb1"
 export DOCKERNAME_MYSQLDB2="mysqldb2"
 
+docker rm -f $DOCKERNAME_WILDFLY3
 docker rm -f $DOCKERNAME_HAPROXY
 docker rm -f $DOCKERNAME_MYSQL_HAPROXY
 docker rm -f $DOCKERNAME_APACHE1
